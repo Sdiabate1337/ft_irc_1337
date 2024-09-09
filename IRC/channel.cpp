@@ -13,7 +13,7 @@ Channel::~Channel() {}
 
  void Channel::setOwner(client *newOwner) {
         owner = newOwner;
-        addOperator(newOwner); 
+        addOperator(owner); 
  }
 
 bool Channel::isOwner(client *member) const {
@@ -104,9 +104,7 @@ bool Channel::checkKey(const std::string &key) const
 }
 
  void Channel::addOperator(client *member) {
-    if (!isOwner(member)) {
         operators.insert(member);
-    }
 }
 
 void Channel::removeOperator(client *client)

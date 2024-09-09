@@ -21,7 +21,7 @@ private:
     std::set<std::string> modes;
     std::set<std::string> bannedUsers;
     std::set<std::string> invitedUsers;
-    std::set<client *> operators; // Use client* instead of strings
+    std::set<client *> operators;
     std::set<client*> removedOperators; 
     std::list<client*> memberOrder;
     int limit;

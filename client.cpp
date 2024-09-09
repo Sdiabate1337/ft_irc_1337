@@ -41,10 +41,10 @@ client::client() : clientManager(ClientManager::getInstance()), fd(-1), connecte
 
     confirme[0] = false;
     confirme[1] = false;
-    command_map["CONNECT"] = &client::connect;
-    command_map["NICK"] = &client::nick;
-    command_map["USER"] = &client::user;
-    command_map["PRIVMSG"] = &client::privmsg;
+    command_map["CONNECT "] = &client::connect;
+    command_map["NICK "] = &client::nick;
+    command_map["USER "] = &client::user;
+    command_map["PRIVMSG "] = &client::privmsg;
     command_map["NOTICE"] = &client::privmsg;
     command_map["FILEMSG"] = &client::filemsg;
     command_map["QUIT"] = &client::quit;
@@ -1066,7 +1066,7 @@ void client::mode(int fd, const std::string &message) {
         return;
     }
 
-    if (!channel->isOperator(this) && !channel->isOwner(this)) {
+    if (!channel->isOperator(this)) {
         sendError(fd, "ERR_CHANOPRIVSNEEDED", channelName);
         return;
     }
